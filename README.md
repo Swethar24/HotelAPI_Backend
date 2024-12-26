@@ -13,9 +13,6 @@ The API provides two endpoints:
 4. [Data Source (hotels.json)](#data-source-hotelsjson)  
 5. [Setup and Running Locally](#setup-and-running-locally)  
 6. [Testing the API](#testing-the-api)  
-7. [Endpoints Summary](#endpoints-summary)  
-8. [Troubleshooting](#troubleshooting)  
-
 ---
 
 ## Features
@@ -94,3 +91,50 @@ Example snippet:
   },
   ...
 ]
+
+
+##Setup and Running Locally
+1. Prerequisites
+.NET 6 SDK or .NET 7 SDK installed.
+An IDE or editor like Visual Studio or Visual Studio Code.
+2. Clone or Download
+Clone this repository
+git clone https://github.com/your-username/HotelApi.git
+cd HotelApi
+Ensure the folder contains Program.cs, Controllers/HotelsController.cs, Data/hotels.json, etc.
+3. Build & Run
+In Visual Studio:  Open the .sln or .csproj file.
+Select Build → Rebuild Solution (or press Ctrl+Shift+B).
+Press F5 (or the “Start” button) to run in debug mode.
+
+In Visual Studio Code: Open the folder containing HotelApi.csproj.
+When prompted, “Add required assets for debugging?” choose Yes.
+Press F5 to start debugging.
+
+Alternatively, from a terminal:
+>dotnet restore
+>dotnet run
+4. The Web Server
+Once running, the console or debug window will show something like:
+
+Now listening on: https://localhost:7047
+Now listening on: http://localhost:5047
+...
+That means the API is up and listening at those URLs.
+
+
+##Testing the API
+Use a browser or tool like Postman or curl to send requests to the endpoints.
+
+1.GET /api/hotels
+
+URL example: https://localhost:7047/api/hotels
+Should return a JSON array of hotels (10 records).
+
+2.GET /api/hotels/{id}
+
+Example: https://localhost:7047/api/hotels/3
+Returns the hotel with id = 3, or a 404 message "Hotel 3 if not found".
+
+Please Note: When we run the code by default it renders " GET /api/hotels" end point.
+

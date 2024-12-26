@@ -138,3 +138,5 @@ Returns the hotel with id = 3, or a 404 message "Hotel 3 if not found".
 
 Please Note: When we run the code by default it renders " GET /api/hotels" end point.
 
+
+

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -15,15 +16,25 @@ namespace HotelApi.Repositories
             // Build the file path to Data/hotels.json
             var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "hotels.json");
 
-            if (File.Exists(jsonFilePath))
-            {
+            try
+            { 
+                if (File.Exists(jsonFilePath))
+                {
                 var jsonData = File.ReadAllText(jsonFilePath);
-                _hotels = JsonSerializer.Deserialize<List<Hotel>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<Hotel>();
-            }
-            else
-            {
+                 // Deserialize the JSON into _hotels
+                 // PropertyNameCaseInsensitive = true matches "id" to Id.
+                 _hotels = JsonSerializer.Deserialize<List<Hotel>>(jsonData, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<Hotel>();
+                }
+                else
+                {
                 // If the file is missing, fallback to an empty list or handle error
                 _hotels = new List<Hotel>();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Throw, so the controller can catch it and return 500
+                throw new Exception("Error reading hotels.json", ex);
             }
         }
 

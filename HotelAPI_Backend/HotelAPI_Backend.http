@@ -1,0 +1,11 @@
+@HotelAPI_Backend_HostAddress = http://localhost:5201
+
+### Get all hotels
+GET {{HotelAPI_Backend_HostAddress}}/api/hotels
+Accept: application/json
+
+### Get a specific hotel by ID
+GET {{HotelAPI_Backend_HostAddress}}/api/hotels/1
+Accept: application/json
+
+###
